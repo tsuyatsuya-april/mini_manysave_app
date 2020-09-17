@@ -1,0 +1,2 @@
+class CreateDate < ApplicationRecord
+end

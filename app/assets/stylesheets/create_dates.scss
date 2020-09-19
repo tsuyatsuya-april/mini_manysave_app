@@ -1,0 +1,80 @@
+// Place all the styles related to the create_dates controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid #eee;
+}
+
+thead,
+tfoot {
+  background: #eee;
+
+}
+
+th {
+  padding: 8px;
+  text-align: center;
+}
+
+td {
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+tbody td:first-child {
+  color: red;
+}
+tbody td:last-child {
+  color: blue;
+}
+
+tfoot {
+  font-weight: bold;
+}
+
+td.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+td.today {
+  font-weight: bold;
+}
+
+
+
+#prev,
+#next,
+#today {
+  cursor: pointer;
+  user-select: none;
+}
+
+#add_date_style{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  margin: 5px 0px;
+  padding: 0px;
+}
+
+.date_time{
+  width: 80px;
+}
+
+.date_input{
+  width: 150px;
+  font-size: 12px;
+}

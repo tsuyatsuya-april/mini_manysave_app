@@ -1,0 +1,42 @@
+<table id="days">
+  <thead>
+    <tr>
+      <th id="prev">&laquo;</th>
+      <th id="title" colspan="5">2020/05</th>
+      <th id="next">&raquo;</th>
+    </tr> 
+    <tr>
+      <th>Sun</th>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+  <tfoot>
+    <tr>
+      <td id="today" colspan="7">Today</td>
+    </tr>
+  </tfoot>
+</table>
+<br>
+
+<% @create_dates.each do |create_date| %>
+  <div id="select_days">
+    <ul id="add_date_style">
+      <li class = "date_input">
+        <%= create_date.savedate %>
+      </li>
+      <li class = "date_time"> 
+        <%= create_date.savetime %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+
+<%= link_to "新規作成", root_path %>

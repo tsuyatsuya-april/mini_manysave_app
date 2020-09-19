@@ -1,7 +1,19 @@
 function main (){
   console.clear();
 
-  { 
+  // 最初のレイアウトを削除する方法
+  firstDelete();
+  function firstDelete() {
+    const firstUl = document.getElementById('add_date_style');
+    const path = location.pathname
+    if (path === "/") {
+    firstUl.remove();
+    }
+  }
+
+  
+
+  {
     const today = new Date();
     let year = today.getFullYear();
     let month = today.getMonth();
@@ -165,7 +177,7 @@ function main (){
       //input要素の生成
       const inputHTML = document.createElement('input');
       inputHTML.setAttribute('id', `date_input_${ulElementNum}`);
-      inputHTML.setAttribute('name', "date[date][]");
+      inputHTML.setAttribute('name', "create_dates[][savedate]");
       inputHTML.setAttribute('value', date_string);
       inputHTML.setAttribute('type', 'date');
       inputHTML.setAttribute('style', 'width:150px;');
@@ -177,7 +189,7 @@ function main (){
 
       //select要素の生成
       const selectHTML = document.createElement('select');
-      selectHTML.setAttribute('name', 'date[time][]');
+      selectHTML.setAttribute('name', 'create_dates[][savetime]');
       selectHTML.setAttribute('id', `time_select_${ulElementNum}`);
       selectHTML.setAttribute('style', `width:80px;`);
       
@@ -242,6 +254,18 @@ function main (){
         };
       };
     }
+    formSubmitJudge();
+  // フォームがゼロの時提出できないようにする為の処理
+  function formSubmitJudge() {
+    document.getElementById("create_data_submit").addEventListener('click', checkFormNumber);
+
+    function checkFormNumber(event) {
+      if(document.querySelectorAll('#add_date_style').length === 0) {
+        event.preventDefault();
+        alert("カレンダーの日付を選択した後、時間の設定をしてください");
+      }
+    }
+  }
   }
 };
 

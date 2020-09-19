@@ -1,13 +1,17 @@
 class CreateDatesController < ApplicationController
 
+  def index
+    @create_dates = CreateDate.all.order(id: 'DESC')
+  end
+
   def new
-    @create_dates = Form::CreateDateCollection.new
+    @create_dates = CreateDateCollection.new
   end
 
   def create
-    @form = Form::CreateDateCollection.new(create_date_params)
-    if @form.save
-      redirect_to root_path
+    @create_dates = CreateDateCollection.new(create_date_params)
+    if @create_dates.save
+      redirect_to action: :index
     else
       render :new
     end
@@ -15,8 +19,6 @@ class CreateDatesController < ApplicationController
 
   private
     def create_date_params
-      params
-        .require(:form_create_date_collection)
-        .permit(create_dates_attributes: :savedate)
+      params.require(:create_dates)
     end
 end

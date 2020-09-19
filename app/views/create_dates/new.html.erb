@@ -27,14 +27,15 @@
 <br>
 
 <%= form_with model: @create_dates, url: create_dates_path, local: true do |form| %>
-    <%= form.fields_for :create_dates do |field| %>
+  <% @create_dates.collection.each do |create_date| %>
+   <%= fields_for 'create_dates[]', create_date do |field| %>
       <div id="select_days">
         <ul id="add_date_style">
           <li class = "date_input">
             <%= field.date_field :savedate, class: 'date-select' %>
           </li>
           <li class = "date_time"> 
-            <%= field.select :savetime, ['00:00~', '00:30~', '01:00~'], {include_blank: '選択'}, class: 'sample' %>
+            <%= field.select :savetime, ['00:00~', '00:30~', '01:00~'], {include_blank: '選択'}, class: 'date_time' %>
           </li>
           <li class = "delete" >
             <%= link_to '削除',"#" %>
@@ -43,8 +44,8 @@
       </div>
       </br>
     <% end %>
-    
+  <% end %>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit value:"登録", id: 'create_data_submit' %>
   </div>
 <% end %>
